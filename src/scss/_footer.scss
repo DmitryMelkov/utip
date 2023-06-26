@@ -1,0 +1,217 @@
+@import "_variables";
+@import "_mixins";
+
+.footer {
+  padding-top: 76px;
+  padding-bottom: 92px;
+  background-color: $blue-funk;
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+  &__top {
+    display: grid;
+    grid-template-columns: repeat(12, 4fr);
+  }
+  &__logo {
+    grid-column: span 1;
+  }
+  &__top-social {
+    grid-column: span 3;
+  }
+  &__top-btn-container {
+    grid-column: span 2;
+  }
+  &__top-download {
+    grid-column: span 6;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__download-link-content {
+    margin-left: 12px;
+    display: flex;
+  }
+  &__download-link {
+    display: block;
+  }
+  &__download-link:not(:last-child) {
+    margin-right: 20px;
+  }
+  &__top-download-text {
+    max-width: 183px;
+    @include text(16px, 24px, 400, $colorWhite);
+  }
+  &__download-link-svg {
+    @include svg-icon(53px, 53px, $colorWhite);
+    transition: color 0.3s ease-in-out;
+  }
+  &__top-social {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &__top-btn-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  &__social-link {
+    @include text(16px, 24px, 400, $colorWhite);
+    transition: color 0.3s ease-in-out;
+  }
+  &__social-link:not(:last-child) {
+    margin-bottom: 8px;
+  }
+  &__center {
+    margin-top: 61px;
+    padding-bottom: 80px;
+    border-bottom: 1px solid rgba($color: $colorWhite, $alpha: 0.7);
+  }
+  &__accordion-wrapper {
+    display: grid;
+    grid-template-columns: repeat(10, 2fr);
+    gap: 30px;
+  }
+  &__accordion-item {
+    grid-column: span 2;
+  }
+  &__accordion-item-header {
+    margin-bottom: 20px;
+  }
+  &__accordion-item-title {
+    @include text(20px, 24px, 500, $colorWhite);
+  }
+  &__accordion-item-link {
+    @include text(16px, 32px, 400, $colorWhite);
+    opacity: 0.7;
+  }
+  &__accordion-item-content {
+    display: flex;
+    flex-direction: column;
+  }
+  &__bottom {
+    padding-top: 46px;
+  }
+  &__bottom-descr {
+    @include text(14px, 24px, 400, $colorWhite);
+  }
+  &__bottom-descr:not(:last-child) {
+    margin-bottom: 15px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer {
+    &__download-link:hover &__download-link-svg {
+      color: $larkspur-blue;
+    }
+    &__social-link:hover {
+      color: $larkspur-blue;
+    }
+  }
+}
+
+//active, focus
+.footer {
+  &__download-link:active &__download-link-svg {
+    color: $larkspur-blue;
+  }
+  &__social-link:active {
+    color: $larkspur-blue;
+  }
+  &__download-link:focus {
+    outline: none;
+  }
+  &__download-link:focus &__download-link-svg {
+    color: $larkspur-blue;
+  }
+  &__social-link:focus {
+    color: $larkspur-blue;
+    outline: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .footer {
+    &__top-download {
+      flex-direction: column;
+    }
+    &__top-download-text {
+      margin-bottom: 5px;
+      max-width: none;
+    }
+    &__download-link-content {
+      margin-left: 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    &__top {
+      grid-template-columns: repeat(8, 4fr);
+      gap: 10px;
+    }
+    &__logo {
+      grid-column: span 2;
+    }
+    &__top-download {
+      align-items: flex-end;
+    }
+    &__top-social {
+      grid-column: span 4;
+    }
+    &__top-btn-container {
+      grid-column: span 4;
+    }
+    &__accordion-wrapper {
+      grid-template-columns: repeat(6, 2fr);
+      gap: 10px;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .footer {
+    &__top {
+      gap: 20px;
+    }
+    &__top-download {
+      order: 1;
+      grid-column: span 8;
+      align-items: center;
+    }
+    &__top-btn-container {
+      grid-column: span 8;
+      order: 2;
+    }
+    &__logo {
+      grid-column: span 4;
+    }
+    &__top-social {
+      align-items: flex-end;
+    }
+    &__accordion-wrapper {
+      gap: 20px;
+    }
+    &__accordion-item {
+      grid-column: span 6;
+    }
+    &__accordion-item-content {
+      position: relative;
+      height: 0;
+      overflow: hidden;
+      transition: height 0.3s ease-in-out;
+      overflow-y: auto;
+    }
+    &__accordion-item.active &__accordion-item-content {
+      height: 150px;
+    }
+    &__accordion-item-header {
+      padding-bottom: 10px;
+      border-bottom: 1px solid $ancestral-water;
+    }
+  }
+}

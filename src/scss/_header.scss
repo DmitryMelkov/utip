@@ -1,0 +1,243 @@
+@import "_variables";
+@import "_mixins";
+
+.header {
+  background-color: $blue-funk;
+  &__container {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    max-width: 1717px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__logo {
+    max-width: 100px;
+    margin-right: 70px;
+  }
+  &__inner {
+    width: 70%;
+    display: flex;
+    align-items: center;
+  }
+  &__nav {
+    width: 100%;
+  }
+  &__nav-list {
+    max-width: 592px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__nav-item {
+    margin-right: 10px;
+  }
+  &__nav-link {
+    @include text(20px, 24px, 700, $colorWhite);
+    transition: color 0.3s ease-in-out;
+  }
+  &__nav-link.active {
+    @include text(20px, 24px, 700, $larkspur-blue);
+  }
+  &__login-content {
+    display: flex;
+    align-items: center;
+  }
+  &__login {
+    margin-left: 40px;
+    padding: 14px 26px;
+    @include text(16px, 24px, 600, $colorWhite);
+    border: 1.5px solid $colorWhite;
+    border-radius: 3px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease-in-out;
+  }
+}
+
+.burger {
+  display: none;
+  &__svg {
+    @include svg-icon(28px, 22px, $colorWhite);
+  }
+}
+
+// select
+.dropdown {
+  position: relative;
+  &__button {
+    padding-right: 25px;
+    position: relative;
+    @include text(16px, 24px, 600, $colorWhite);
+    cursor: pointer;
+    outline: none;
+    transition: opacity 0.3s ease-in-out;
+  }
+  &__button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    background-image: url("../img/Vector.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    width: 15px;
+    height: 10px;
+
+    /* Снимаем клик с треугольника */
+    pointer-events: none;
+  }
+  &__list {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 35px;
+
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    background-color: $colorWhite;
+    box-shadow: 0px 4px 8px rgba(176, 198, 225, 0.6);
+    overflow: hidden;
+
+    border-radius: 6px;
+    width: 100%;
+
+    z-index: 1;
+  }
+  &__list--visible {
+    display: block;
+  }
+  &__list-item {
+    margin: 0;
+    padding: 5px;
+    @include text(16px, 24px, 500, $colorBlack);
+    border: 1px solid $washed-denim;
+    border-bottom: 0px;
+    cursor: pointer;
+  }
+  &__list-item:first-child {
+    border-radius: 6px 6px 0 0;
+  }
+  &__list-item:last-child {
+    border-radius: 0 0 6px 6px;
+    border-bottom: 1px solid $washed-denim;
+  }
+  &__list-item:hover {
+    background: rgba(176, 198, 225, 0.26);
+  }
+  &__input-hidden {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header {
+    &__nav-link:hover {
+      color: $larkspur-blue;
+    }
+    &__login:hover {
+      opacity: 0.3;
+    }
+  }
+  .dropdown {
+    &__button:hover {
+      opacity: 0.3;
+    }
+  }
+}
+
+//active, focus
+.header {
+  &__nav-link:active {
+    color: $larkspur-blue;
+  }
+  &__login:active {
+    opacity: 0.3;
+  }
+  &__nav-link:focus {
+    color: $larkspur-blue;
+    outline: none;
+  }
+  &__login:focus {
+    opacity: 0.3;
+    outline: none;
+  }
+}
+
+.burger:active .burger__svg {
+  @include svg-icon(28px, 22px, $larkspur-blue);
+}
+
+.burger:focus {
+  outline: none;
+}
+
+
+.burger:focus .burger__svg {
+  @include svg-icon(28px, 22px, $larkspur-blue);
+}
+
+.dropdown {
+  &__button:active {
+    opacity: 0.3;
+  }
+  &__button:focus {
+    opacity: 0.3;
+    outline: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .burger {
+    display: block;
+    margin-right: 30px;
+  }
+  .header {
+    &__inner {
+      position: relative;
+    }
+    &__nav-list {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateY(-150%);
+      flex-direction: column;
+      background-color: $colorWhite;
+      border-radius: 3px;
+      border: 1px solid $washed-denim;
+      box-shadow: 0px 4px 8px rgba(176, 198, 225, 0.6);
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+    &__nav-list.toggle {
+      transform: translateY(35%);
+      opacity: 1;
+    }
+    &__nav-item {
+      width: 100%;
+      padding: 10px;
+    }
+    &__nav-item:not(:last-child) {
+      margin-right: 0;
+      border-bottom: 1px solid $washed-denim;
+    }
+    &__nav-link {
+      color: $colorBlack;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    &__container {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    &__logo {
+      margin-right: 0;
+    }
+  }
+}

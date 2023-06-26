@@ -1,0 +1,46 @@
+@import "_variables";
+@import "_mixins";
+
+.questions {
+  background-color: $lighthouse;
+  &__container {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+  &__title {
+    margin-bottom: 24px;
+  }
+  &__item-title {
+    @include text(20px, 52px, 600, $colorBlack);
+  }
+  &__descr {
+    @include text(16px, 28px, 400, $colorBlack);
+  }
+  &__btn {
+    margin-top: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .questions {
+    &__item-title {
+      @include text(18px, 52px, 600, $colorBlack);
+    }
+    &__descr {
+      @include text(14px, 28px, 400, $colorBlack);
+    }
+  }
+
+}
+
+@media (max-width: 600px) {
+  .questions {
+    &__item-title {
+      @include text(18px, 24px, 600, $colorBlack);
+    }
+    &__descr {
+      @include text(12px, 16px, 400, $colorBlack);
+    }
+  }
+
+}

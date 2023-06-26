@@ -1,0 +1,45 @@
+<header class="header">
+  <div class="container header__container">
+    <div class="header__inner">
+      <button class="burger btn-reset burger-open-js">
+        <svg class="burger__svg">
+          <use xlink:href="img/icons/icons.svg#burger"></use>
+        </svg>
+      </button>
+      <div class="header__logo">
+        <img src="@img/logo.png" alt="logo">
+      </div>
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li class="header__nav-item">
+            <a class="header__nav-link" href="#">Торговля</a>
+          </li>
+          <li class="header__nav-item">
+            <a class="header__nav-link active" href="#">Рынки</a>
+          </li>
+          <li class="header__nav-item">
+            <a class="header__nav-link" href="#">Клиентам</a>
+          </li>
+          <li class="header__nav-item">
+            <a class="header__nav-link" href="#">О нас</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header__login-content">
+      <div class="header__lang-select">
+        <div class="dropdown">
+          <button class="dropdown__button btn-reset">Ru</button>
+          <ul class="dropdown__list">
+            <li class="dropdown__list-item" data-value="ru">Ru</li>
+            <li class="dropdown__list-item" data-value="eng">Eng</li>
+            <li class="dropdown__list-item" data-value="deu">Deu</li>
+          </ul>
+          <input type="text" name="select-category" value="" class="dropdown__input-hidden">
+        </div>
+      </div>
+      <button class="header__login btn-reset">Войти</button>
+    </div>
+  </div>
+
+</header>
